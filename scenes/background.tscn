@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://csvqn56q05pt0"]
+
+[ext_resource type="Texture2D" uid="uid://cmbl6oqeuhbsq" path="res://assets/background/sky.png" id="1_bkp1e"]
+[ext_resource type="Texture2D" uid="uid://cnvibxm2psktg" path="res://assets/background/far-clouds.png" id="2_cbsqf"]
+[ext_resource type="Texture2D" uid="uid://cm6v88qw1m7su" path="res://assets/background/far-mountains.png" id="2_jougr"]
+[ext_resource type="Texture2D" uid="uid://c3d5p1cdb7m4n" path="res://assets/background/mountains.png" id="2_y0upk"]
+[ext_resource type="Texture2D" uid="uid://b22qcrfs674ts" path="res://assets/background/trees.png" id="5_wisxt"]
+
+[node name="Background" type="Node2D"]
+
+[node name="Sky" type="Parallax2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Sky"]
+texture = ExtResource("1_bkp1e")
+centered = false
+
+[node name="Far Clouds" type="Parallax2D" parent="."]
+repeat_size = Vector2(125, 0)
+autoscroll = Vector2(-7.5, 0)
+repeat_times = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="Far Clouds"]
+texture = ExtResource("2_cbsqf")
+centered = false
+
+[node name="Far Mountains" type="Parallax2D" parent="."]
+repeat_size = Vector2(160, 0)
+autoscroll = Vector2(-18, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Far Mountains"]
+texture = ExtResource("2_jougr")
+centered = false
+
+[node name="Near Mountains" type="Parallax2D" parent="."]
+repeat_size = Vector2(320, 0)
+autoscroll = Vector2(-25, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Near Mountains"]
+texture = ExtResource("2_y0upk")
+centered = false
+
+[node name="Trees" type="Parallax2D" parent="."]
+scroll_offset = Vector2(0, -29)
+repeat_size = Vector2(240, 0)
+autoscroll = Vector2(-50, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Trees"]
+texture = ExtResource("5_wisxt")
+centered = false

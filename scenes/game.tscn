@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://c47r230t6ng3p"]
+[gd_scene load_steps=6 format=3 uid="uid://c47r230t6ng3p"]
 
 [ext_resource type="PackedScene" uid="uid://cxvfj248f3v2o" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://csvqn56q05pt0" path="res://scenes/background.tscn" id="1_yqjtg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uwrxv"]
 size = Vector2(320, 10)
@@ -13,8 +14,10 @@ size = Vector2(10, 180)
 
 [node name="Game" type="Node2D"]
 
+[node name="Background" parent="." instance=ExtResource("1_yqjtg")]
+
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
-position = Vector2(50, 98)
+position = Vector2(50, 155)
 
 [node name="Floor" type="StaticBody2D" parent="."]
 position = Vector2(160, 160)
