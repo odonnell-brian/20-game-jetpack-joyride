@@ -8,9 +8,7 @@
 
 [node name="Background" type="Node2D"]
 
-[node name="Sky" type="Parallax2D" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="Sky"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_bkp1e")
 centered = false
 
@@ -41,7 +39,7 @@ texture = ExtResource("2_y0upk")
 centered = false
 
 [node name="Trees" type="Parallax2D" parent="."]
-scroll_offset = Vector2(0, -29)
+scroll_offset = Vector2(0, -50)
 repeat_size = Vector2(240, 0)
 autoscroll = Vector2(-50, 0)
 repeat_times = 3

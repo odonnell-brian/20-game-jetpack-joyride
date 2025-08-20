@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcxqdi67iwyae"]
+
+[ext_resource type="Texture2D" uid="uid://b4cdpte70o3dm" path="res://assets/background/background.tres" id="1_pybca"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pybca"]
+size = Vector2(320, 10)
+
+[node name="Ground" type="Node2D"]
+
+[node name="Ground" type="Parallax2D" parent="."]
+scroll_offset = Vector2(0, 155)
+repeat_size = Vector2(96, 0)
+autoscroll = Vector2(-55, 0)
+repeat_times = 9
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground"]
+texture = ExtResource("1_pybca")
+centered = false
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(160, 160)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+shape = SubResource("RectangleShape2D_pybca")

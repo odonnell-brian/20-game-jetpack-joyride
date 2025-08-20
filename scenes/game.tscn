@@ -2,9 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cxvfj248f3v2o" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://csvqn56q05pt0" path="res://scenes/background.tscn" id="1_yqjtg"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uwrxv"]
-size = Vector2(320, 10)
+[ext_resource type="PackedScene" uid="uid://bcxqdi67iwyae" path="res://scenes/ground.tscn" id="2_lnu2h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yqjtg"]
 size = Vector2(320, 10)
@@ -15,28 +13,6 @@ size = Vector2(10, 180)
 [node name="Game" type="Node2D"]
 
 [node name="Background" parent="." instance=ExtResource("1_yqjtg")]
-
-[node name="Player" parent="." instance=ExtResource("1_uwrxv")]
-position = Vector2(50, 155)
-
-[node name="Floor" type="StaticBody2D" parent="."]
-position = Vector2(160, 160)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
-shape = SubResource("RectangleShape2D_uwrxv")
-
-[node name="ColorRect" type="ColorRect" parent="Floor"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -160.0
-offset_top = -5.0
-offset_right = 160.0
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="Ceiling" type="StaticBody2D" parent="."]
 
@@ -55,3 +31,8 @@ position = Vector2(325, 90)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall Right"]
 shape = SubResource("RectangleShape2D_lnu2h")
+
+[node name="Ground" parent="." instance=ExtResource("2_lnu2h")]
+
+[node name="Player" parent="." instance=ExtResource("1_uwrxv")]
+position = Vector2(50, 155)

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7mv51eit4wxi"]
+
+[ext_resource type="Texture2D" uid="uid://ck7ldlr40ae38" path="res://assets/background/background_tiles_texture.tres" id="1_uxhg1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_powrn"]
+size = Vector2(32, 32)
+
+[node name="BlockVertical" type="Node2D"]
+scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_uxhg1")
+region_enabled = true
+region_rect = Rect2(96, 96, 32, 32)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_powrn")

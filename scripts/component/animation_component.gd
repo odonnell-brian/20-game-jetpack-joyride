@@ -13,5 +13,4 @@ func handle_animation(is_jumping: bool, is_falling: bool) -> void:
 		animation_name = "fall"
 
 	if animated_sprite.animation != animation_name:
-		print(animation_name)
 		animated_sprite.play(animation_name)
