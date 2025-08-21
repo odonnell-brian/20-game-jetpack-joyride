@@ -1,13 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://b5ixqi3g156ew"]
+[gd_scene load_steps=5 format=3 uid="uid://b5ixqi3g156ew"]
 
 [ext_resource type="Texture2D" uid="uid://ck7ldlr40ae38" path="res://assets/background/background_tiles_texture.tres" id="1_217j7"]
+[ext_resource type="Script" uid="uid://b1k8lxuluh2uk" path="res://scripts/obstacles/obstacle.gd" id="1_dq7sb"]
+[ext_resource type="PackedScene" uid="uid://lahwr10hk4ps" path="res://scenes/component/scroll_component.tscn" id="2_oubxw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_powrn"]
 size = Vector2(96, 32)
 
-[node name="BlockVertical" type="Node2D"]
+[node name="BlockVertical" type="Node2D" groups=["obstacle"]]
 rotation = 1.5708
 scale = Vector2(0.5, 0.5)
+script = ExtResource("1_dq7sb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_217j7")
@@ -18,3 +21,5 @@ region_rect = Rect2(0, 96, 96, 32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_powrn")
+
+[node name="ScrollComponent" parent="." instance=ExtResource("2_oubxw")]

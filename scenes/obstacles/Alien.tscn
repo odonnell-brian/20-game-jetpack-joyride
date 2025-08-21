@@ -1,6 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://04rnayxdgq3i"]
+[gd_scene load_steps=12 format=3 uid="uid://04rnayxdgq3i"]
 
 [ext_resource type="Texture2D" uid="uid://bxwqjwuccogm0" path="res://assets/obstacle/Alien_run.png" id="1_2gyvw"]
+[ext_resource type="Script" uid="uid://b1k8lxuluh2uk" path="res://scripts/obstacles/obstacle.gd" id="1_pa6dc"]
+[ext_resource type="PackedScene" uid="uid://lahwr10hk4ps" path="res://scenes/component/scroll_component.tscn" id="3_sxgic"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pa6dc"]
 atlas = ExtResource("1_2gyvw")
@@ -56,7 +58,9 @@ animations = [{
 radius = 4.0
 height = 12.0
 
-[node name="Alien" type="Node2D"]
+[node name="Alien" type="Node2D" node_paths=PackedStringArray("scroll_component") groups=["obstacle"]]
+script = ExtResource("1_pa6dc")
+scroll_component = NodePath("ScrollComponent")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -8)
@@ -70,3 +74,5 @@ flip_h = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-1, -6)
 shape = SubResource("CapsuleShape2D_r2x4a")
+
+[node name="ScrollComponent" parent="." instance=ExtResource("3_sxgic")]

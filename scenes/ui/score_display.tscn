@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://butulypg1atmo"]
+
+[ext_resource type="FontFile" uid="uid://brj3j6wnkqqcl" path="res://assets/ui/Kenney Future.ttf" id="1_7ymsa"]
+[ext_resource type="Script" uid="uid://dj6xy2md0mvvr" path="res://scripts/ui/score_display.gd" id="1_ad7uf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ad7uf"]
+font = ExtResource("1_7ymsa")
+
+[node name="ScoreDisplay" type="Control" node_paths=PackedStringArray("score_label")]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 10.0
+offset_bottom = 10.0
+script = ExtResource("1_ad7uf")
+score_label = NodePath("Score")
+
+[node name="Score" type="Label" parent="."]
+texture_filter = 2
+layout_mode = 0
+offset_right = 34.0
+offset_bottom = 18.0
+text = "100"
+label_settings = SubResource("LabelSettings_ad7uf")

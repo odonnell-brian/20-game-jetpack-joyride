@@ -1,0 +1,60 @@
+[gd_scene load_steps=10 format=3 uid="uid://btu6iacnmgxph"]
+
+[sub_resource type="Curve" id="Curve_4potr"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1e-05, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_jw3tu"]
+curve = SubResource("Curve_4potr")
+
+[sub_resource type="Gradient" id="Gradient_4potr"]
+offsets = PackedFloat32Array(0, 0.0818182, 0.527273, 1)
+colors = PackedColorArray(0.809458, 0.449551, 0.171389, 1, 0.926282, 0.239187, 0.169848, 1, 0.53855, 0.556787, 0.564573, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jw3tu"]
+gradient = SubResource("Gradient_4potr")
+
+[sub_resource type="Curve" id="Curve_y25om"]
+_data = [Vector2(0, 0.325843), 0.0, 2.29213, 0, 1, Vector2(0.294118, 1), 2.29213, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_677d1"]
+curve_y = SubResource("Curve_y25om")
+
+[sub_resource type="Curve" id="Curve_ioprr"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.404412, 0.674157), 0.371697, 0.371697, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_b0n7q"]
+curve = SubResource("Curve_ioprr")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cmmuw"]
+lifetime_randomness = 0.14
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+direction = Vector3(-0.5, 1, 0)
+spread = 16.807
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+angular_velocity_min = -1.60933e-05
+angular_velocity_max = -1.60933e-05
+directional_velocity_min = -26.0
+directional_velocity_max = -26.0
+directional_velocity_curve = SubResource("CurveXYZTexture_677d1")
+radial_velocity_min = 9.99998
+radial_velocity_max = 9.99998
+gravity = Vector3(0, 0, 0)
+scale_min = 0.2
+scale_curve = SubResource("CurveTexture_b0n7q")
+color_ramp = SubResource("GradientTexture1D_jw3tu")
+alpha_curve = SubResource("CurveTexture_jw3tu")
+
+[node name="Particle" type="GPUParticles2D"]
+amount = 600
+preprocess = 2.0
+process_material = SubResource("ParticleProcessMaterial_cmmuw")

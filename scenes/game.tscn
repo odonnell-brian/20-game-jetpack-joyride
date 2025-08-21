@@ -1,18 +1,26 @@
-[gd_scene load_steps=6 format=3 uid="uid://c47r230t6ng3p"]
+[gd_scene load_steps=13 format=3 uid="uid://c47r230t6ng3p"]
 
+[ext_resource type="Script" uid="uid://c42qln1itqm56" path="res://scripts/core/game.gd" id="1_iywne"]
 [ext_resource type="PackedScene" uid="uid://cxvfj248f3v2o" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://csvqn56q05pt0" path="res://scenes/background.tscn" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://bcxqdi67iwyae" path="res://scenes/ground.tscn" id="2_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://butulypg1atmo" path="res://scenes/ui/score_display.tscn" id="4_lbhrr"]
+[ext_resource type="Script" uid="uid://c8v3n5orryfv3" path="res://scenes/obstacle_spawner.gd" id="6_p57ef"]
+[ext_resource type="PackedScene" uid="uid://04rnayxdgq3i" path="res://scenes/obstacles/Alien.tscn" id="7_vtaks"]
+[ext_resource type="PackedScene" uid="uid://do2byb3vur4b6" path="res://scenes/obstacles/BlockHorizontal.tscn" id="8_kvpfn"]
+[ext_resource type="PackedScene" uid="uid://c7mv51eit4wxi" path="res://scenes/obstacles/BlockSmall.tscn" id="9_dinhu"]
+[ext_resource type="PackedScene" uid="uid://b5ixqi3g156ew" path="res://scenes/obstacles/BlockVertical.tscn" id="10_kvuet"]
+[ext_resource type="Script" uid="uid://b3xvxyneshgfx" path="res://scripts/obstacles/obstacle_spawn.gd" id="11_kvpfn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yqjtg"]
 size = Vector2(320, 10)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lnu2h"]
-size = Vector2(10, 180)
-
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("score_display")]
+script = ExtResource("1_iywne")
+score_display = NodePath("ScoreDisplay")
 
 [node name="Background" parent="." instance=ExtResource("1_yqjtg")]
+z_index = -50
 
 [node name="Ceiling" type="StaticBody2D" parent="."]
 
@@ -20,19 +28,43 @@ size = Vector2(10, 180)
 position = Vector2(160, -5)
 shape = SubResource("RectangleShape2D_yqjtg")
 
-[node name="Wall Left" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall Left"]
-position = Vector2(-5, 90)
-shape = SubResource("RectangleShape2D_lnu2h")
-
-[node name="Wall Right" type="StaticBody2D" parent="."]
-position = Vector2(325, 90)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall Right"]
-shape = SubResource("RectangleShape2D_lnu2h")
+[node name="Player" parent="." instance=ExtResource("1_uwrxv")]
+position = Vector2(50, 155)
 
 [node name="Ground" parent="." instance=ExtResource("2_lnu2h")]
 
-[node name="Player" parent="." instance=ExtResource("1_uwrxv")]
-position = Vector2(50, 155)
+[node name="ScoreDisplay" parent="." instance=ExtResource("4_lbhrr")]
+z_index = 50
+
+[node name="ObstacleManager" type="Node" parent="." node_paths=PackedStringArray("spawn_timer", "marker_spawns")]
+script = ExtResource("6_p57ef")
+spawn_timer = NodePath("Timer")
+marker_spawns = {
+NodePath("Bottom"): NodePath("Bottom/Obstacles"),
+NodePath("Mid"): NodePath("Mid/Obstacles"),
+NodePath("Top"): NodePath("Top/Obstacles")
+}
+
+[node name="Bottom" type="Marker2D" parent="ObstacleManager"]
+position = Vector2(348, 155)
+
+[node name="Obstacles" type="Node" parent="ObstacleManager/Bottom"]
+script = ExtResource("11_kvpfn")
+obstacles = Array[PackedScene]([ExtResource("7_vtaks")])
+
+[node name="Mid" type="Marker2D" parent="ObstacleManager"]
+position = Vector2(348, 91)
+
+[node name="Obstacles" type="Node" parent="ObstacleManager/Mid"]
+script = ExtResource("11_kvpfn")
+obstacles = Array[PackedScene]([ExtResource("8_kvpfn"), ExtResource("9_dinhu"), ExtResource("10_kvuet")])
+
+[node name="Top" type="Marker2D" parent="ObstacleManager"]
+position = Vector2(348, 29)
+
+[node name="Obstacles" type="Node" parent="ObstacleManager/Top"]
+script = ExtResource("11_kvpfn")
+obstacles = Array[PackedScene]([ExtResource("9_dinhu"), ExtResource("8_kvpfn")])
+
+[node name="Timer" type="Timer" parent="ObstacleManager"]
+wait_time = 3.0

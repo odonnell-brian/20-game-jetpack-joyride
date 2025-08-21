@@ -1,0 +1,63 @@
+[gd_scene load_steps=3 format=3 uid="uid://jlbn7k5fs2go"]
+
+[ext_resource type="LabelSettings" uid="uid://b0j66ubtspcll" path="res://scenes/ui/new_label_settings.tres" id="1_60xr3"]
+[ext_resource type="FontFile" uid="uid://brj3j6wnkqqcl" path="res://assets/ui/Kenney Future.ttf" id="2_fu4wh"]
+
+[node name="GameOver" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -90.0
+offset_right = 160.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.227451)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.5
+offset_top = -25.0
+offset_right = 60.5
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Game Over		"
+label_settings = ExtResource("1_60xr3")
+
+[node name="ScoreLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Score: %score%"
+label_settings = ExtResource("1_60xr3")
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_fu4wh")
+text = "Replay"
