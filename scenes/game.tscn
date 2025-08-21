@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c47r230t6ng3p"]
+[gd_scene load_steps=14 format=3 uid="uid://c47r230t6ng3p"]
 
 [ext_resource type="Script" uid="uid://c42qln1itqm56" path="res://scripts/core/game.gd" id="1_iywne"]
 [ext_resource type="PackedScene" uid="uid://cxvfj248f3v2o" path="res://scenes/player.tscn" id="1_uwrxv"]
@@ -11,32 +11,37 @@
 [ext_resource type="PackedScene" uid="uid://c7mv51eit4wxi" path="res://scenes/obstacles/BlockSmall.tscn" id="9_dinhu"]
 [ext_resource type="PackedScene" uid="uid://b5ixqi3g156ew" path="res://scenes/obstacles/BlockVertical.tscn" id="10_kvuet"]
 [ext_resource type="Script" uid="uid://b3xvxyneshgfx" path="res://scripts/obstacles/obstacle_spawn.gd" id="11_kvpfn"]
+[ext_resource type="PackedScene" uid="uid://jlbn7k5fs2go" path="res://scenes/ui/game_over.tscn" id="12_dinhu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yqjtg"]
 size = Vector2(320, 10)
 
-[node name="Game" type="Node2D" node_paths=PackedStringArray("score_display")]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("score_display", "game_over_screen")]
+process_mode = 3
 script = ExtResource("1_iywne")
 score_display = NodePath("ScoreDisplay")
+game_over_screen = NodePath("GameOver")
 
 [node name="Background" parent="." instance=ExtResource("1_yqjtg")]
+process_mode = 1
 z_index = -50
 
 [node name="Ceiling" type="StaticBody2D" parent="."]
+process_mode = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ceiling"]
 position = Vector2(160, -5)
 shape = SubResource("RectangleShape2D_yqjtg")
 
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
+process_mode = 1
 position = Vector2(50, 155)
 
 [node name="Ground" parent="." instance=ExtResource("2_lnu2h")]
-
-[node name="ScoreDisplay" parent="." instance=ExtResource("4_lbhrr")]
-z_index = 50
+process_mode = 1
 
 [node name="ObstacleManager" type="Node" parent="." node_paths=PackedStringArray("spawn_timer", "marker_spawns")]
+process_mode = 1
 script = ExtResource("6_p57ef")
 spawn_timer = NodePath("Timer")
 marker_spawns = {
@@ -68,3 +73,14 @@ obstacles = Array[PackedScene]([ExtResource("9_dinhu"), ExtResource("8_kvpfn")])
 
 [node name="Timer" type="Timer" parent="ObstacleManager"]
 wait_time = 3.0
+
+[node name="ScoreDisplay" parent="." instance=ExtResource("4_lbhrr")]
+process_mode = 1
+z_index = 50
+
+[node name="GameOver" parent="." instance=ExtResource("12_dinhu")]
+z_index = 100
+offset_left = 160.0
+offset_top = 90.0
+offset_right = 160.0
+offset_bottom = 90.0
