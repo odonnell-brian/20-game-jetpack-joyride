@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c47r230t6ng3p"]
+[gd_scene load_steps=15 format=3 uid="uid://c47r230t6ng3p"]
 
 [ext_resource type="Script" uid="uid://c42qln1itqm56" path="res://scripts/core/game.gd" id="1_iywne"]
 [ext_resource type="PackedScene" uid="uid://cxvfj248f3v2o" path="res://scenes/player.tscn" id="1_uwrxv"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c7mv51eit4wxi" path="res://scenes/obstacles/BlockSmall.tscn" id="9_dinhu"]
 [ext_resource type="PackedScene" uid="uid://b5ixqi3g156ew" path="res://scenes/obstacles/BlockVertical.tscn" id="10_kvuet"]
 [ext_resource type="Script" uid="uid://b3xvxyneshgfx" path="res://scripts/obstacles/obstacle_spawn.gd" id="11_kvpfn"]
+[ext_resource type="PackedScene" uid="uid://bhpgnck2o7xx1" path="res://scenes/obstacles/BlockHorizontalWithCoins.tscn" id="11_kvuet"]
 [ext_resource type="PackedScene" uid="uid://jlbn7k5fs2go" path="res://scenes/ui/game_over.tscn" id="12_dinhu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yqjtg"]
@@ -49,6 +50,7 @@ NodePath("Bottom"): NodePath("Bottom/Obstacles"),
 NodePath("Mid"): NodePath("Mid/Obstacles"),
 NodePath("Top"): NodePath("Top/Obstacles")
 }
+min_spawn_time = 1.5
 
 [node name="Bottom" type="Marker2D" parent="ObstacleManager"]
 position = Vector2(348, 155)
@@ -62,7 +64,7 @@ position = Vector2(348, 91)
 
 [node name="Obstacles" type="Node" parent="ObstacleManager/Mid"]
 script = ExtResource("11_kvpfn")
-obstacles = Array[PackedScene]([ExtResource("8_kvpfn"), ExtResource("9_dinhu"), ExtResource("10_kvuet")])
+obstacles = Array[PackedScene]([ExtResource("8_kvpfn"), ExtResource("9_dinhu"), ExtResource("10_kvuet"), ExtResource("11_kvuet")])
 
 [node name="Top" type="Marker2D" parent="ObstacleManager"]
 position = Vector2(348, 29)
@@ -79,7 +81,9 @@ process_mode = 1
 z_index = 50
 
 [node name="GameOver" parent="." instance=ExtResource("12_dinhu")]
+visible = false
 z_index = 100
+texture_filter = 0
 offset_left = 160.0
 offset_top = 90.0
 offset_right = 160.0

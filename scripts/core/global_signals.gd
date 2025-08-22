@@ -2,7 +2,7 @@ class_name GlobalSignals
 extends Node
 
 @warning_ignore("unused_signal")
-signal player_death
+signal player_death()
 
 @warning_ignore("unused_signal")
-signal restart_level
+signal restart_level()

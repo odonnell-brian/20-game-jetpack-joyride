@@ -14,6 +14,7 @@ func _ready() -> void:
 	get_tree().paused = false
 	Signals.player_death.connect(on_player_death)
 	Signals.restart_level.connect(on_restart_level)
+	($Player as Player).pickup_collected.connect(on_pickup_collected)
 
 func _process(delta: float) -> void:
 	if not get_tree().paused:
@@ -26,6 +27,9 @@ func on_player_death() -> void:
 
 func get_score_int() -> int:
 	return floori(score)
+
+func on_pickup_collected(_pickup: Pickup) -> void:
+	score += 100
 
 func on_restart_level() -> void:
 	get_tree().call_deferred("reload_current_scene")

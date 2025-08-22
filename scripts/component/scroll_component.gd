@@ -7,3 +7,6 @@ extends Node
 
 func handle_scroll(node: Node2D, delta: float) -> void:
 	node.position += Vector2(delta * speed_x, delta * speed_y)
+
+	if node.global_position.x < -50:
+		node.queue_free()

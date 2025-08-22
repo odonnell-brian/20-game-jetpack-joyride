@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhpgnck2o7xx1"]
+
+[ext_resource type="PackedScene" uid="uid://do2byb3vur4b6" path="res://scenes/obstacles/BlockHorizontal.tscn" id="1_pyhdy"]
+[ext_resource type="PackedScene" uid="uid://du1pi88548tht" path="res://scenes/pickups/diamond_pickup.tscn" id="2_8nkfs"]
+
+[node name="BlockHorizontalWithCoins" type="Node2D"]
+
+[node name="BlockHorizontal" parent="." instance=ExtResource("1_pyhdy")]
+
+[node name="DiamondPickup" parent="." instance=ExtResource("2_8nkfs")]
+position = Vector2(0, -25)
+
+[node name="DiamondPickup2" parent="." instance=ExtResource("2_8nkfs")]
+position = Vector2(-25, -25)
+
+[node name="DiamondPickup3" parent="." instance=ExtResource("2_8nkfs")]
+position = Vector2(25, -25)
+
+[node name="DiamondPickup4" parent="." instance=ExtResource("2_8nkfs")]
+position = Vector2(-25, 25)
+
+[node name="DiamondPickup5" parent="." instance=ExtResource("2_8nkfs")]
+position = Vector2(0, 25)
+
+[node name="DiamondPickup6" parent="." instance=ExtResource("2_8nkfs")]
+position = Vector2(25, 25)

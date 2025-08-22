@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://du1pi88548tht"]
+
+[ext_resource type="Script" uid="uid://dn2fvijcfb0wb" path="res://scenes/pickups/pickup.gd" id="1_eyg0v"]
+[ext_resource type="Texture2D" uid="uid://d1048pxfjq46h" path="res://assets/pickups/Diamond.png" id="1_obluv"]
+[ext_resource type="PackedScene" uid="uid://lahwr10hk4ps" path="res://scenes/component/scroll_component.tscn" id="3_kfosw"]
+[ext_resource type="AudioStream" uid="uid://dxg802jwupiew" path="res://assets/pickups/coin.wav" id="4_a2uc5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eyg0v"]
+size = Vector2(10, 17)
+
+[node name="DiamondPickup" type="Area2D" node_paths=PackedStringArray("scroll_component")]
+script = ExtResource("1_eyg0v")
+scroll_component = NodePath("ScrollComponent")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_obluv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_eyg0v")
+
+[node name="ScrollComponent" parent="." instance=ExtResource("3_kfosw")]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_a2uc5")

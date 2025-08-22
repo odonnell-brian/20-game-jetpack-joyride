@@ -9,7 +9,7 @@ size = Vector2(96, 32)
 
 [node name="BlockVertical" type="Node2D" groups=["obstacle"]]
 rotation = 1.5708
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.6, 0.6)
 script = ExtResource("1_dq7sb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

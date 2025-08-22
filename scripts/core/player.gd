@@ -1,6 +1,9 @@
 class_name Player
 extends CharacterBody2D
 
+@warning_ignore("unused_signal")
+signal pickup_collected(pickup: Pickup)
+
 const OBSTACLE_GROUP: String = "obstacle"
 
 @export_category("Components")

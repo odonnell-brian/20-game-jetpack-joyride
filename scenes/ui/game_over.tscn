@@ -2,7 +2,7 @@
 
 [ext_resource type="LabelSettings" uid="uid://b0j66ubtspcll" path="res://scenes/ui/new_label_settings.tres" id="1_60xr3"]
 [ext_resource type="Script" uid="uid://djo6ata2v8fkd" path="res://scripts/ui/game_over.gd" id="1_x6o8e"]
-[ext_resource type="FontFile" uid="uid://brj3j6wnkqqcl" path="res://assets/ui/Kenney Future.ttf" id="2_fu4wh"]
+[ext_resource type="FontFile" uid="uid://bixa4l73smid8" path="res://assets/ui/PixelOperator8.ttf" id="3_x6o8e"]
 
 [node name="GameOver" type="Control"]
 process_mode = 3
@@ -33,7 +33,6 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.227451)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-texture_filter = 2
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -64,5 +63,5 @@ label_settings = ExtResource("1_60xr3")
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("2_fu4wh")
+theme_override_fonts/font = ExtResource("3_x6o8e")
 text = "Replay"

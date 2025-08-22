@@ -5,7 +5,7 @@ func _ready() -> void:
 	%RestartButton.pressed.connect(on_restart)
 	hide()
 
-func show_game_over(score: int):
+func show_game_over(score: int) -> void:
 	%ScoreLabel.text = %ScoreLabel.text.replace("%score%", str(score))
 	show()
 
